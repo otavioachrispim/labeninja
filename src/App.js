@@ -12,7 +12,7 @@ import {
 } from "react-icons/io5";
 import BeNinja from "./components/BeNinja";
 import HireNinja from "./components/HireNinja";
-import WorkCardDetail from "./components/WorkCardDetail";
+import ShoppingCart from "./components/ShoppingCart";
 
 export default class App extends React.Component {
   state = {
@@ -25,6 +25,10 @@ export default class App extends React.Component {
 
   handleClickHireNinjaPage = () => {
     this.setState({ section: "HireNinja" });
+  };
+
+  handleClickShoppingCartPage = () => {
+    this.setState({ section: "ShoppingCart" });
   };
 
   renderPages = () => {
@@ -80,6 +84,12 @@ export default class App extends React.Component {
         return <BeNinja />;
       case "HireNinja":
         return <HireNinja />;
+      case "ShoppingCart":
+        return (
+          <>
+            <ShoppingCart title="Web design" price="R$30,00" total="R$30,00" />
+          </>
+        );
       default:
         return <h2>Oops! Algo deu errado!</h2>;
     }
@@ -91,6 +101,7 @@ export default class App extends React.Component {
         <Header
           handleClickBeNinja={this.handleClickBeNinjaPage}
           handleClickHireNinja={this.handleClickHireNinjaPage}
+          handleClickShoppingCart={this.handleClickShoppingCartPage}
         />
         {this.renderPages()}
       </Container>

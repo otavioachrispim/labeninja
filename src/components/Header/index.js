@@ -12,7 +12,7 @@ export default function Header(props) {
           <button onClick={props.handleClickHireNinja}>Contratar ninja</button>
         </div>
         <ButtonCart>
-          <button>
+          <button onClick={props.handleClickShoppingCart}>
             <IoCartOutline />
           </button>
         </ButtonCart>

@@ -117,6 +117,7 @@ export default class BeNinja extends React.Component {
           />
           <input
             required
+            min="0"
             type="number"
             placeholder="Preço"
             value={this.state.jobPrice}

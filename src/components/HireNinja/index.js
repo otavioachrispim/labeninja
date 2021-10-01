@@ -59,8 +59,6 @@ export default class HireNinja extends React.Component {
   };
 
   getJobById = async (jobId) => {
-    this.setState({ loading: true });
-
     const url = `https://labeninjas.herokuapp.com/jobs/${jobId}`;
 
     try {
@@ -81,31 +79,25 @@ export default class HireNinja extends React.Component {
     this.getAllJobs();
   };
 
-  handleJobIncrementToCart(job) {
+  handleClickAddToCart = (job) => {
     const cloneListCartShopping = [...this.state.listCartShopping];
 
-    const jobExists = cloneListCartShopping.find((item) => {
+    const jobOnList = cloneListCartShopping.find((item) => {
       return item.id === job.id;
     });
 
-    if (!jobExists) {
-      const newJobCart = {
+    if (!jobOnList) {
+      const newJobOnCartShopping = {
         ...job,
-        amount: 1,
       };
       this.setState({
-        listCartShopping: [...cloneListCartShopping, newJobCart],
+        listCartShopping: [...cloneListCartShopping, newJobOnCartShopping],
       });
     } else {
-      const indexJobOnList = cloneListCartShopping.findIndex((item) => {
-        return item.id === job.id;
-      });
-
-      cloneListCartShopping[indexJobOnList].amount += 1;
-
+      alert("Produto já foi adicionado ao carrinho!");
       this.setState({ listCartShopping: cloneListCartShopping });
     }
-  }
+  };
 
   render() {
     const jobsListPosted = this.state.jobsList
@@ -142,7 +134,7 @@ export default class HireNinja extends React.Component {
             paymentMethods={job.paymentMethods}
             dueDate={job.dueDate}
             handleClickDetail={() => this.handleClickDetail(job.id)}
-            // handleClickAddToCart={this.handleJobIncrementToCart(job)}
+            // handleClickAddToCart={() => this.handleClickAddToCart(job)}
           />
         );
       });
