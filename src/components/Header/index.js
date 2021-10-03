@@ -2,21 +2,28 @@ import React from "react";
 import { Container, HeaderContent, ButtonCart } from "./styles";
 import { IoCartOutline } from "react-icons/io5";
 
-export default function Header(props) {
-  return (
-    <Container>
-      <HeaderContent>
-        <a href="/">LabeNinjas</a>
-        <div>
-          <button onClick={props.handleClickBeNinja}>Seja ninja</button>
-          <button onClick={props.handleClickHireNinja}>Contratar ninja</button>
-        </div>
-        <ButtonCart>
-          <button onClick={props.handleClickShoppingCart}>
-            <IoCartOutline />
-          </button>
-        </ButtonCart>
-      </HeaderContent>
-    </Container>
-  );
+export default class Header extends React.Component {
+  render() {
+    return (
+      <Container>
+        <HeaderContent>
+          <a href="/">LabeNinjas</a>
+          <div>
+            <button onClick={() => this.props.changePage("BeNinja")}>
+              Seja ninja
+            </button>
+            <button onClick={() => this.props.changePage("HireNinja")}>
+              Contratar ninja
+            </button>
+          </div>
+          <ButtonCart>
+            <button onClick={() => this.props.changePage("ShoppingCart")}>
+              <IoCartOutline />
+              <strong>Ver carrinho</strong>
+            </button>
+          </ButtonCart>
+        </HeaderContent>
+      </Container>
+    );
+  }
 }

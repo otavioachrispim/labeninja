@@ -10,6 +10,11 @@ export const FilterContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 728px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const SearchBox = styled.div`

@@ -12,6 +12,11 @@ export const HeaderContent = styled.div`
   justify-content: space-around;
   padding: 2rem 1rem;
 
+  @media (max-width: 728px) {
+    display: flex;
+    flex-direction: column;
+  }
+
   a {
     text-decoration: none;
     color: #111;
@@ -21,6 +26,11 @@ export const HeaderContent = styled.div`
 
   > div {
     display: flex;
+
+    @media (max-width: 728px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   svg {
@@ -40,6 +50,11 @@ export const HeaderContent = styled.div`
     background-color: transparent;
     transition: all 0.2s;
 
+    @media (max-width: 728px) {
+      margin: 0;
+      margin-top: 16px;
+    }
+
     :hover {
       border: 0;
       background-color: var(--blue);
@@ -53,6 +68,11 @@ export const HeaderContent = styled.div`
       background-color: transparent;
       border: 1px solid var(--orange);
 
+      @media (max-width: 728px) {
+        margin: 0;
+        margin-top: 16px;
+      }
+
       :hover {
         background-color: var(--orange);
         color: var(--background);
@@ -63,9 +83,20 @@ export const HeaderContent = styled.div`
 `;
 
 export const ButtonCart = styled.div`
+  strong {
+    display: none;
+    color: #111;
+
+    @media (max-width: 728px) {
+      display: block;
+    }
+  }
+
   button {
+    width: 100%;
     border: 0;
-    width: 30px;
+    display: flex;
+    align-items: center;
 
     :hover {
       background-color: #fff;

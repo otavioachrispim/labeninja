@@ -1,7 +1,7 @@
 import React from "react";
-import { Container, CheckboxContainer } from "./styles";
+import { Container, CheckboxContainer, FormContent } from "./styles";
 import axios from "axios";
-import NumberFormat from "react-number-format";
+import man from "../../assets/man.jpg";
 
 const headers = {
   headers: {
@@ -41,12 +41,6 @@ export default class BeNinja extends React.Component {
   handleChangeCheckedBox = (e) => {
     this.setState({ [e.target.name]: e.target.checked });
   };
-
-  // handleChangePaymentMethods = (e) => {
-  //   const copyPaymentMethods = [];
-  //   copyPaymentMethods.push(e.target.checked);
-  //   return this.state.paymentMethods;
-  // };
 
   createJob = async (e) => {
     e.preventDefault();
@@ -99,70 +93,81 @@ export default class BeNinja extends React.Component {
   render() {
     return (
       <Container>
-        <h1>O que você faz?</h1>
-        <form onSubmit={this.createJob}>
-          <input
-            required
-            type="text"
-            placeholder="Título"
-            value={this.state.jobTitle}
-            onChange={this.handleChangeJobTitle}
-          />
-          <input
-            required
-            type="text"
-            placeholder="Descrição"
-            value={this.state.jobDescription}
-            onChange={this.handleChangeJobDescription}
-          />
-          <input
-            required
-            min="0"
-            type="number"
-            placeholder="Preço"
-            value={this.state.jobPrice}
-            onChange={this.handleChangeJobPrice}
-          />
-          <CheckboxContainer>
+        <img src={man} alt="" />
+        <FormContent>
+          <h1>O que você faz?</h1>
+          <form onSubmit={this.createJob}>
             <input
-              name="checkedBoxCredit"
-              type="checkbox"
-              checked={this.state.checkedBoxCredit}
-              onChange={this.handleChangeCheckedBox}
+              required
+              type="text"
+              placeholder="Título"
+              value={this.state.jobTitle}
+              onChange={this.handleChangeJobTitle}
             />
-            <label htmlFor="credit">Crédito</label>
+            <input
+              required
+              type="text"
+              placeholder="Descrição"
+              value={this.state.jobDescription}
+              onChange={this.handleChangeJobDescription}
+            />
+            <input
+              required
+              min="0"
+              type="number"
+              placeholder="Preço"
+              value={this.state.jobPrice}
+              onChange={this.handleChangeJobPrice}
+            />
+            <CheckboxContainer>
+              <div>
+                <input
+                  name="checkedBoxCredit"
+                  type="checkbox"
+                  checked={this.state.checkedBoxCredit}
+                  onChange={this.handleChangeCheckedBox}
+                />
+                <label htmlFor="credit">Crédito</label>
+              </div>
 
-            <input
-              name="checkedBoxDebit"
-              type="checkbox"
-              checked={this.state.checkedBoxDebit}
-              onChange={this.handleChangeCheckedBox}
-            />
-            <label htmlFor="debit">Débito</label>
+              <div>
+                <input
+                  name="checkedBoxDebit"
+                  type="checkbox"
+                  checked={this.state.checkedBoxDebit}
+                  onChange={this.handleChangeCheckedBox}
+                />
+                <label htmlFor="debit">Débito</label>
+              </div>
 
-            <input
-              name="checkedBoxBoleto"
-              type="checkbox"
-              checked={this.state.checkedBoxBoleto}
-              onChange={this.handleChangeCheckedBox}
-            />
-            <label htmlFor="boleto">Boleto</label>
+              <div>
+                <input
+                  name="checkedBoxBoleto"
+                  type="checkbox"
+                  checked={this.state.checkedBoxBoleto}
+                  onChange={this.handleChangeCheckedBox}
+                />
+                <label htmlFor="boleto">Boleto</label>
+              </div>
 
+              <div>
+                <input
+                  name="checkedBoxPix"
+                  type="checkbox"
+                  checked={this.state.checkedBoxPix}
+                  onChange={this.handleChangeCheckedBox}
+                />
+                <label htmlFor="pix">Pix</label>
+              </div>
+            </CheckboxContainer>
             <input
-              name="checkedBoxPix"
-              type="checkbox"
-              checked={this.state.checkedBoxPix}
-              onChange={this.handleChangeCheckedBox}
+              type="date"
+              value={this.state.jobDate}
+              onChange={this.handleChangeJobDate}
             />
-            <label htmlFor="pix">Pix</label>
-          </CheckboxContainer>
-          <input
-            type="date"
-            value={this.state.jobDate}
-            onChange={this.handleChangeJobDate}
-          />
-          <button type="submit">Cadastrar</button>
-        </form>
+            <button type="submit">Cadastrar</button>
+          </form>
+        </FormContent>
       </Container>
     );
   }
